@@ -1,0 +1,246 @@
+
+Problem Statement
+
+In most programming languages variable names cannot contain spaces.
+ If we want a variable name that consists of two or more words, we have to encode the spaces somehow.
+ In this problem, we will look at two ways of doing so: Snake Case and Camel Case.
+ When using Snake Case, we just replace each space by an underscore ('_').
+ When using Camel Case, we capitalize the first letter of each word except for the first one, and then we remove all spaces.
+   For example, suppose that we want to declare a variable called "good morning world" (quotes for clarity).
+ In Snake Case, we would write this variable as "good_morning_world", while in Camel Case it would be "goodMorningWorld".
+   You are given a String variableName.
+ This String contains a valid variable name written in Snake Case.
+ Return the same variable name in Camel Case.
+
+Definition
+
+Class:
+NamingConvention
+Method:
+toCamelCase
+Parameters:
+String
+Returns:
+String
+Method signature:
+String toCamelCase(String variableName)
+(be sure your method is public)
+Limits
+
+Time limit (s):
+2.000
+Memory limit (MB):
+256
+Constraints
+-
+variableName will contain between 1 and 50 characters.
+-
+Each character of variableName will be 'a'-'z' or '_'.
+-
+The first and last character of variableName will not be '_'.
+-
+variableName will not contain two consecutive underscores ('_').
+Examples
+0)
+
+
+"sum_of_two_numbers"
+Returns: "sumOfTwoNumbers"
+We have 4 words: "sum", "of", "two", "numbers". So the answer is "sum" + "Of" + "Two" + "Numbers".
+1)
+
+
+"variable"
+Returns: "variable"
+Note that if we have only 1 word, then the varaible name will remain same.
+2)
+
+
+"t_o_p_c_o_d_e_r"
+Returns: "tOPCODER"
+
+3)
+
+
+"the_variable_name_can_be_very_long_like_this"
+Returns: "theVariableNameCanBeVeryLongLikeThis"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+Problem Statement
+
+There is a narrow passage.
+ Inside the passage there are some wolves.
+ You are given a int[] size that contains the sizes of those wolves, from left to right.
+
+ The passage is so narrow that some pairs of wolves cannot pass by each other.
+ More precisely, two adjacent wolves may swap places if and only if the sum of their sizes is maxSizeSum or less.
+ Assuming that no wolves leave the passage, what is the number of different permutations of wolves in the passage?
+ Note that two wolves are considered different even if they have the same size.
+
+ Compute and return the number of permutations of wolves that can be obtained from their initial order by swapping a pair of wolves zero or more times.
+
+Definition
+
+Class:
+NarrowPassage2Easy
+Method:
+count
+Parameters:
+int[], int
+Returns:
+int
+Method signature:
+int count(int[] size, int maxSizeSum)
+(be sure your method is public)
+Limits
+
+Time limit (s):
+2.000
+Memory limit (MB):
+256
+Constraints
+-
+size will contain between 1 and 6 elements, inclusive.
+-
+Each element in size will be between 1 and 1,000, inclusive.
+-
+maxSizeSum will be between 1 and 1,000, inclusive.
+Examples
+0)
+
+
+{1, 2, 3}
+3
+Returns: 2
+From {1, 2, 3}, you can swap 1 and 2 to get {2, 1, 3}. But you can't get other permutations.
+1)
+
+
+{1, 2, 3}
+1000
+Returns: 6
+Here you can swap any two adjacent wolves. Thus, all 3! = 6 permutations are possible.
+2)
+
+
+{1, 2, 3}
+4
+Returns: 3
+You can get {1, 2, 3}, {2, 1, 3} and {2, 3, 1}.
+3)
+
+
+{1,1,1,1,1,1}
+2
+Returns: 720
+All of these wolves are different, even though their sizes are the same. Thus, there are 6! different permutations possible.
+4)
+
+
+{2,4,6,1,3,5}
+8
+Returns: 60
+
+5)
+
+
+{1000}
+1000
+Returns: 1
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Problem Statement
+
+You have a lot of candles. The candles burn at a uniform rate: if you ignite a candle of length L, it will burn completely in L units of time. You can also ignite a candle at both ends, which makes it burn twice as fast.   You have arranged some candles into the shape of a tree. You want to use the tree to measure time. At the beginning, you will ingite some leaves of the tree (all at the same time). Then you will just wait and watch the flames spread across the entire tree. (Whenever a flame reaches an inner node of the tree, it spreads to all branches that meet at that node.) Note that you are not allowed to light new flames during the process. The time you will measure is the time between the moment when you lighted the fire(s) and the moment when the last part of the tree finished burning.   You are given a description of the tree as three int[]s: a, b, and len, with N elements each. The nodes of the tree are numbered 0 through N, inclusive. For each valid i, there is a candle between the nodes a[i] and b[i] with length len[i].   Compute and return the number of different times you can measure when following the above procedure.
+Definition
+
+Class:
+CandleTimerEasy
+Method:
+differentTime
+Parameters:
+int[], int[], int[]
+Returns:
+int
+Method signature:
+int differentTime(int[] A, int[] B, int[] len)
+(be sure your method is public)
+Limits
+
+Time limit (s):
+2.000
+Memory limit (MB):
+256
+Constraints
+-
+A will contain between 1 and 19 elements, inclusive.
+-
+A, B and len will contain same number of elements.
+-
+Each element in A will be between 0 and |A|, inclusive.
+-
+Each element in B will be between 0 and |A|, inclusive.
+-
+Each element in len will be between 1 and 1000, inclusive.
+-
+A, B and len will describe a tree.
+Examples
+0)
+
+
+{0,1}
+{1,2}
+{10,1}
+Returns: 2
+This tree looks the same as a single candle of length 11. If we light it on one end, we will measure the time 11. If we light it on both ends, we will measure the time 5.5.
+1)
+
+
+{0,0,0}
+{1,2,3}
+{1,1,1}
+Returns: 2
+This time we have 3 ends. If we ignite all of them the time is 1, otherwise the time is 2.
+2)
+
+
+{0,0,0}
+{1,2,3}
+{1,2,3}
+Returns: 4
+We can get 4 different outcomes: 2, 3, 4, 5.
+3)
+
+
+{0,1,1,2,3,3,2,4}
+{1,2,3,4,5,6,7,8}
+{5,3,2,4,6,8,7,1}
+Returns: 7
+
+4)
+
+
+{0,0,0,0}
+{1,2,3,4}
+{123,456,789,1000}
+Returns: 8
+
+5)
+
+
+{0}
+{1}
+{1000}
+Returns: 2
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+
